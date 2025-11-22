@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS google_accounts
+(
+    id UUID PRIMARY KEY NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NULL,
+
+    account_id UUID NOT NULL UNIQUE,
+    sub TEXT NOT NULL UNIQUE,
+
+    CONSTRAINT fk_account FOREIGN KEY(account_id) REFERENCES accounts(id) ON DELETE CASCADE
+);
